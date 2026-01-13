@@ -1,70 +1,85 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  </head>
-  <body>
-    
+<head>
+   <meta charset = "UTF-8">
+   <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+   <meta name = "description" content = "3Q 2nd Graded Exercise">
+   <meta name = "keywords" content = "3Q, Portfolio, Projects, Web Development">
+   <meta name = "author" content = "BINADAY, Aliya Louise B.">
+</head>
+
+<body>
+
+<form method="post" action="submit">
+
   <fieldset>
-    <form>
-  <label for="studentID"> StudentID: </label><br/>
-  <input type="number">
-    </form><br/>
-  
-    <form>
-  <label for="fullname"> Full Name: </label><br/>
-  <input type="text">
-    </form><br/>
-    
-    <form>
-  <label for="birthday"> Birthday: </label><br/>
-  <input type="date">
-    </form><br/>
-    
-    <form>
-  <label for="Email"> Email Address: </label><br/>
-  <input type="email">
-    </form>
-</fieldset><br/>
+    <label>
+      Student ID:<br>
+      <input type="number" name="studentID" required>
+    </label><br><br>
 
-<fieldset>
-    <form>
-  <label for="mobilephone"> Mobile Phone: </label><br/>
-  <input type="text">
-    </form><br/>
-    
-    <form>
-  <label for="gradelevel"> Grade Level: </label><br/>
-  <select name="gradelevel" id="gradelevel">
-      <option value="grade7">Grade 7</option>
-      <option value="grade8">Grade 8</option>
-      <option value="grade9">Grade 9</option>
-      <option value="grade10">Grade 10</option>
-  </select>
-    </form><br/>
-    
-    <form>
-  <label for="intern_extern"> Intern/Extern: </label><br/>
-  <input type= "radio" value="intern">
-  <label for="intern">Intern</label><br>
-  <input type= "radio" value="extern">
-  <label for="extern">Extern</label><br>
-    </form><br/>
+    <label>
+      Full Name:<br>
+      <input type="text" name="fullname" required>
+    </label><br><br>
 
-    <form>
-  <label for="org_club"> Preferred Organization / Club: </label><br/>
-  <select name="org_club" id="org_club">
-      <option value="grade7">Grade 7</option>
-      <option value="grade8">Grade 8</option>
-      <option value="grade9">Grade 9</option>
-      <option value="grade10">Grade 10</option>
-  </select>
-    </form><br/>
-    
-    <form>
-  <label for="whyjoin"> Why do you want to join? </label><br/>
-  <input type="textarea">
-    </form><br/>
+    <label>
+      Birthday:<br>
+      <input type="date" name="birthday" required>
+    </label><br><br>
 
-</fieldset><br/>
-  </body>
+    <label>
+      Email Address:<br>
+      <input type="email" name="email" required>
+    </label>
+  </fieldset><br>
+
+  <fieldset>
+    <label>
+      Mobile Phone:<br>
+      <input type="text" name="mobile" required>
+    </label><br><br>
+
+    <label>
+      Grade Level:<br>
+      <select name="gradelevel" required>
+        <option value="g7">Grade 7</option>
+        <option value="g8">Grade 8</option>
+        <option value="g9">Grade 9</option>
+        <option value="g10">Grade 10</option>
+        <option value="g11">Grade 11</option>
+        <option value="g12">Grade 12</option>
+      </select>
+    </label><br><br>
+
+    <label>
+      Intern / Extern:<br>
+      <input type="radio" name="status" value="I" required> Intern
+      <input type="radio" name="status" value="E"> Extern
+    </label><br><br>
+
+    <label>
+      Preferred Organization / Club:<br>
+      <select name="orgclub" required>
+          <option value="orgclub1">Likha</option>
+          <option value="orgclub2">Sapienara</option></option>
+          <option value="orgclub3">Math Club</option>
+          <option value="orgclub4">Lagablab</option>
+          <option value="orgclub5">Solace</option>
+          <option value="orgclub6">The Science Scholar</option>
+      </select>
+    </label><br><br>
+
+    <label>
+      Why do you want to join?<br>
+      <textarea name="reason" rows="4" cols="40" required></textarea>
+    </label>
+  </fieldset><br>
+
+  <input type="submit" value="Submit">
+  <input type="reset" value="Reset">
+
+</form>
+
+</body>
 </html>
