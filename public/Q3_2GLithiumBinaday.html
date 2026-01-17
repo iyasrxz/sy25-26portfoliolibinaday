@@ -7,20 +7,123 @@
    <meta name = "keywords" content = "3Q, Portfolio, Projects, Web Development">
    <meta name = "author" content = "BINADAY, Aliya Louise B.">
 </head>
+<style>
+  body {
+    background-color: #fde6e4;
+    font-family: "Trebuchet MS", sans-serif;
+    color: #355f3b;
+  }
 
+  form {
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: #deb1a6;
+    padding: 30px;
+    border-radius: 20px;
+  }
+
+  fieldset {
+    border: 3px solid #4f6f52;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background-color: #f5d6d3;
+  }
+
+  legend {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 0 10px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 10px;
+    border: 2px solid #8aa874;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+
+  input[type="radio"] {
+    width: auto;
+    margin-right: 6px;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .radio-group {
+    margin-top: 6px;
+  }
+
+  .buttons {
+  display: flex;
+  justify-content: center; 
+  gap: 20px;              
+  margin-top: 20px;
+  }
+
+  .buttons input {
+  width: 140px;
+  }
+
+  input[type="submit"],
+  input[type="reset"] {
+    background-color: #8aa874;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    margin: 10px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover,
+  input[type="reset"]:hover {
+  background-color: #6f8f5f;
+  }
+</style>
+<script>
+    function confirmSubmit() {
+      return confirm("Are you sure you want to submit this application?");
+    }
+
+    function confirmReset() {
+      return confirm("Are you sure you want to reset the form?");
+    }
+
+    function checkEmpty(field) {
+      if (field.value.trim() === "") {
+        field.classList.add("error");
+      } else {
+        field.classList.remove("error");
+      }
+    }
+</script>
 <body>
 
-<form method="post" action="submit">
+<form method="post" action="submit" onsubmit="return confirmSubmit()" onreset="return confirmReset()">
 
   <fieldset>
     <label>
       Student ID:<br>
-      <input type="number" name="studentID" required>
+      <input type="number" name="studentID" required onblur="checkEmpty(this)">
     </label><br><br>
 
     <label>
       Full Name:<br>
-      <input type="text" name="fullname" required>
+      <input type="text" name="fullname" required onblur="checkEmpty(this)">
     </label><br><br>
 
     <label>
@@ -30,14 +133,14 @@
 
     <label>
       Email Address:<br>
-      <input type="email" name="email" required>
+      <input type="email" name="email" required onblur="checkEmpty(this)">
     </label>
   </fieldset><br>
 
   <fieldset>
     <label>
       Mobile Phone:<br>
-      <input type="text" name="mobile" required>
+      <input type="text" name="mobile" required onblur="checkEmpty(this)">
     </label><br><br>
 
     <label>
@@ -76,8 +179,10 @@
     </label>
   </fieldset><br>
 
+  <div class="buttons">
   <input type="submit" value="Submit">
   <input type="reset" value="Reset">
+  </div>
 
 </form>
 
