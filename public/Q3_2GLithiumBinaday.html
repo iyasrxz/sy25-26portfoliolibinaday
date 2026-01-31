@@ -65,17 +65,6 @@
     margin-top: 6px;
   }
 
-  .buttons {
-  display: flex;
-  justify-content: center; 
-  gap: 20px;              
-  margin-top: 20px;
-  }
-
-  .buttons input {
-  width: 140px;
-  }
-
   input:focus,
   select:focus,
   textarea:focus {
@@ -101,6 +90,29 @@
   input[type="reset"]:hover {
   background-color: #6f8f5f;
   }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .buttons input, .buttons button {
+    width: 140px;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    background-color: #8aa874;
+    color: white;
+  }
+
+  .buttons input:hover,
+  .buttons button:hover {
+    background-color: #6f8f5f;
+  }
 </style>
 <script>
     function confirmSubmit() {
@@ -118,10 +130,39 @@
         field.classList.remove("error");
       }
     }
+
+    function saveSignup(event) {
+    event.preventDefault();
+
+    if (!confirmSubmit()) return;
+
+    let signup = {
+      studentID: document.querySelector("[name='studentID']").value,
+      fullname: document.querySelector("[name='fullname']").value,
+      birthday: document.querySelector("[name='birthday']").value,
+      email: document.querySelector("[name='email']").value,
+      mobile: document.querySelector("[name='mobile']").value,
+      gradelevel: document.querySelector("[name='gradelevel']").value,
+      status: document.querySelector("input[name='status']:checked").value,
+      club: document.querySelector("[name='orgclub']").value,
+      reason: document.querySelector("[name='reason']").value
+    };
+
+    let signups = JSON.parse(localStorage.getItem("signups")) || [];
+    signups.push(signup);
+    localStorage.setItem("signups", JSON.stringify(signups));
+
+    alert("Sign-up saved successfully!");
+    event.target.reset();
+    }
+
+    function viewSignups() {
+    window.location.href = "viewSignUps.html";
+    }
 </script>
 <body>
 
-<form method="post" action="submit" onsubmit="return confirmSubmit()" onreset="return confirmReset()">
+<form onsubmit="saveSignup(event)" onreset="return confirmReset()">
 
   <fieldset>
     <label>
@@ -154,30 +195,32 @@
     <label>
       Grade Level:<br>
       <select name="gradelevel" required>
-        <option value="g7">Grade 7</option>
-        <option value="g8">Grade 8</option>
-        <option value="g9">Grade 9</option>
-        <option value="g10">Grade 10</option>
-        <option value="g11">Grade 11</option>
-        <option value="g12">Grade 12</option>
+        <option value="N/A">- select an option -</option>
+        <option value="Grade 7">Grade 7</option>
+        <option value="Grade 8">Grade 8</option>
+        <option value="Grade 9">Grade 9</option>
+        <option value="Grade 10">Grade 10</option>
+        <option value="Grade 11">Grade 11</option>
+        <option value="Grade 12">Grade 12</option>
       </select>
     </label><br><br>
 
     <label>
       Intern / Extern:<br>
-      <input type="radio" name="status" value="I" required> Intern
-      <input type="radio" name="status" value="E"> Extern
+      <input type="radio" name="status" value="Intern" required> Intern
+      <input type="radio" name="status" value="Extern" required> Extern
     </label><br><br>
 
     <label>
       Preferred Organization / Club:<br>
       <select name="orgclub" required>
-          <option value="orgclub1">Likha</option>
-          <option value="orgclub2">Sapienara</option></option>
-          <option value="orgclub3">Math Club</option>
-          <option value="orgclub4">Lagablab</option>
-          <option value="orgclub5">Solace</option>
-          <option value="orgclub6">The Science Scholar</option>
+          <option value="N/A">- select an option -</option>
+          <option value="Likha">Likha</option>
+          <option value="Sapienara">Sapienara</option>
+          <option value="Math Club">Math Club</option>
+          <option value="Lagablab">Lagablab</option>
+          <option value="Solace">Solace</option>
+          <option value="The Science Scholar">The Science Scholar</option>
       </select>
     </label><br><br>
 
@@ -190,6 +233,7 @@
   <div class="buttons">
   <input type="submit" value="Submit">
   <input type="reset" value="Reset">
+  <button type="button" onclick="viewSignups()">View Signups</button>
   </div>
 
 </form>
