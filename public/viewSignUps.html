@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+  <meta name = "description" content = "3Q 3rd Graded Exercise">
+  <meta name = "keywords" content = "3Q, Portfolio, Projects, Web Development">
+  <meta name = "author" content = "BINADAY, Aliya Louise B.">
+  <style>
+    body {
+      background-color: #fde6e4;
+      font-family: "Trebuchet MS", sans-serif;
+      color: #355f3b;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    select {
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #f5d6d3;
+    }
+
+    th, td {
+      border: 2px solid #8aa874;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #8aa874;
+      color: white;
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    a {
+      display: block;
+      margin-top: 25px;
+      text-align: center;
+      color: #355f3b;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Student Club Sign-Ups</h1>
+
+<label>Filter by Club:
+  <select id="clubFilter" onchange="filterTable()">
+    <option value="ALL">ALL</option>
+    <option value="Likha">Likha</option>
+    <option value="Sapienara">Sapienara</option>
+    <option value="Math Club">Math Club</option>
+    <option value="Lagablab">Lagablab</option>
+    <option value="Solace">Solace</option>
+    <option value="The Science Scholar">The Science Scholar</option>
+  </select>
+</label>
+
+<p id="total"></p>
+
+<table id="signupTable">
+  <thead>
+  <tr>
+    <th>Club</th>
+    <th>ID</th>
+    <th>Fullname</th>
+    <th>Grade</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>Intern/Extern</th>
+  </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<p class="message" id="message"></p>
+
+<a href="Q3_2GLithiumBinaday.html">← Back to Sign-Up Page</a>
+
+<script>
+  let signups = JSON.parse(localStorage.getItem("signups")) || [];
+
+  function displayTable(data) {
+    const tbody = document.querySelector("tbody");
+    const message = document.getElementById("message");
+    tbody.innerHTML = "";
+
+    if (data.length === 0) {
+      message.textContent = "No sign-ups found for the selected club.";
+      document.getElementById("total").textContent = "Total Sign-ups: 0";
+      return;
+    }
+
+    message.textContent = "";
+    data.forEach(s => {
+  tbody.innerHTML += `
+    <tr>
+      <td>${s.club}</td>
+      <td>${s.studentID}</td>
+      <td>${s.fullname}</td>
+      <td>${s.gradelevel}</td>
+      <td>${s.email}</td>
+      <td>${s.mobile}</td>
+      <td>${s.status}</td>
+    </tr>`;
+  });
+
+    document.getElementById("total").textContent =
+      "Total Sign-ups: " + data.length;
+  }
+
+  function filterTable() {
+    const club = document.getElementById("clubFilter").value;
+    if (club === "ALL") {
+      displayTable(signups);
+    } else {
+      displayTable(signups.filter(s => s.club === club));
+    }
+  }
+
+  if (signups.length === 0) {
+    document.getElementById("message").textContent =
+      "No sign-ups have been saved yet.";
+  } else {
+    displayTable(signups);
+  }
+</script>
+
+</body>
+</html>
