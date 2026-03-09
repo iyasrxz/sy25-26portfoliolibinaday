@@ -6,7 +6,7 @@
     <meta name="description" content="2Q Portfolio">
     <meta name = "keywords" content = "2Q, Portfolio, Projects, Web Development">
     <meta name="author" content="BINADAY, Aliya Louise B.">
-    <title>2Q Portfolio</title>
+    <title>SY25-26 Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./asset/hehe.png" sizes="32x32" type="Image/png"> 
     <script src="script.js" defer></script>
@@ -74,11 +74,11 @@
     background-color: var(--green-dark);
     box-shadow: 0 0 10px var(--pink-soft);
   }
-  .links1, .links2 {
+  .links1, .links2, .links3 {
     display: none;
     margin-top: 10px;
   }
-  .links1 a, .links2 a {
+  .links1 a, .links2 a, .links3 a {
     display: inline-block;
     text-decoration: none;
     background-color: var(--white);
@@ -89,7 +89,7 @@
     margin: 6px;
     transition: all 0.3s ease;
   }
-  .links1 a:hover, .links2 a:hover {
+  .links1 a:hover, .links2 a:hover, .links3 a:hover {
     background-color: var(--green-dark);
     color: var(--white);
   }
@@ -106,7 +106,7 @@
 <body>
   <header>
     <img src="./asset/hehe.png" alt="Aliya's Logo" title="૮₍ ⸝⸝´ ꒳ `⸝⸝ ₎ა" width="100px" height="100px">
-    <h1>₊˚⊹ CS3 Quarter 2 Portfolio ⋆˚꩜.ᐟ</h1>
+    <h1>₊˚⊹ CS3 SY25-26 Portfolio ⋆˚꩜.ᐟ</h1>
     <p>by BINADAY, Aliya Louise</p>
     <p> 9 - Lithium </p>
   </header>
@@ -121,6 +121,13 @@
     <button onclick="toggleLinks2()"> Quarter 3 Exercises </button>
     <div class="links2" id="exerciseLinks2">
       <a href="./public/Q3_2GLithiumBinaday.html"> Q3 2nd Graded Exercise </a>
+    </div>
+  </nav>
+  <nav>
+    <button onclick="toggleLinks3()"> Quarter 4 Exercises </button>
+    <div class="links3" id="exerciseLinks3">
+      <a href="./public/q41gLithiumBinaday.html"> Q4 1st Graded Exercise </a>
+    </div>
   </nav>
   <footer>
     <p>Copyright <span>&copy; 2025 Aliya Binaday | PSHS-MC </span></p>
@@ -140,6 +147,14 @@
         links2.style.display = "block";
       } else {
         links2.style.display = "none";
+      }
+    }
+     function toggleLinks3() {
+      const links3 = document.getElementById("exerciseLinks3");
+      if (links3.style.display === "none" || links3.style.display === "") {
+        links3.style.display = "block";
+      } else {
+        links3.style.display = "none";
       }
     }
   </script>
