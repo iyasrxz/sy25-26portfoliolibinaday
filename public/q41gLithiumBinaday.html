@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <meta name = "description" content = "4Q 1st Graded Exercise">
+    <meta name = "keywords" content = "4Q, Portfolio, Projects, Web Development">
+    <meta name = "author" content = "BINADAY, Aliya Louise B.">
+    <title>Q4 Graded Exercise 1: Movie Rating</title>
+    <link rel = "icon" href = "../asset/hehe.png" type = "image/png"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+<style>
+body{
+  font-family: 'Roboto Mono', monospace;
+  background-image: url("../asset/bg2.jpeg");
+  background-size: 100% 100%;
+  color: rgb(255, 255, 255);
+  margin: 0;
+  padding: 0;
+}
+
+.container{
+  width:420px;
+  margin:40px auto;
+  background:linear-gradient(#f9bdc1,#f1c9cc,#ffffff);
+  padding:25px;
+  border-radius:18px;
+}
+
+.card{
+  border:2px solid #2e6b4f;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:20px;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:15px;
+}
+
+label{
+  font-weight:bold;
+  display:block;
+  margin-top:10px;
+}
+
+input, select{
+  width:95%;
+  padding:10px;
+  border-radius:10px;
+  border:2px solid #7aa889;
+  margin-top:5px;
+}
+
+button{
+  width:100%;
+  margin-top:15px;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#3a6446;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.stars{
+  font-size:28px;
+  cursor:pointer;
+  color:#ffffff;
+}
+
+.stars .active{
+  color:gold;
+}
+
+.movie{
+  background:#3a6446;
+  padding:10px;
+  border-radius:10px;
+  margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="card">
+    <h2>⊹ ࣪ ˖Add a Movie ⋆.𐙚 ̊</h2>
+
+    <label>Title</label>
+    <input type="text" id="title">
+
+    <label>Year</label>
+    <input type="number" id="year">
+
+    <label>Genre</label>
+    <select id="genre">
+      <option>Comedy</option>
+      <option>Drama</option>
+      <option>Sci-Fi</option>
+      <option>Romance</option>
+      <option>RomCom</option>
+    </select>
+
+    <label>Rating</label>
+    <div class="stars" id="stars">
+      <span data-value="1">★</span>
+      <span data-value="2">★</span>
+      <span data-value="3">★</span>
+      <span data-value="4">★</span>
+      <span data-value="5">★</span>
+    </div>
+
+    <button onclick="addMovie()">Add Movie</button>
+  </div>
+
+  <div class="card">
+    <h2>˚˖𓍢ִ໋❀ Movie List 𐔌՞ ܸ.ˬ.ܸ՞𐦯</h2>
+    <div id="movieList"></div>
+  </div>
+
+</div>
+
+<script>
+let rating = 0;
+
+// star rating system!!
+// when a star is clicked, save its value and update the star display
+document.querySelectorAll("#stars span").forEach(star=>{
+  star.addEventListener("click", function(){
+    rating = this.dataset.value;
+    updateStars();
+  });
+});
+
+// updates the star colors based on the selected rating
+function updateStars(){
+  document.querySelectorAll("#stars span").forEach(star=>{
+    star.classList.toggle("active", star.dataset.value <= rating);
+  });
+}
+
+// load movies when page opens
+document.addEventListener("DOMContentLoaded", displayMovies);
+
+// get movies from localStorage
+function getMovies(){
+  return JSON.parse(localStorage.getItem("movies")) || [];
+}
+
+//save movies to localStorage
+function saveMovies(movies){
+  localStorage.setItem("movies", JSON.stringify(movies));
+}
+
+// create a movie
+function addMovie(){
+
+  const movie = {
+    title: document.getElementById("title").value,
+    year: document.getElementById("year").value,
+    genre: document.getElementById("genre").value,
+    rating: rating
+  };
+
+  const movies = getMovies();
+  movies.push(movie);
+  saveMovies(movies);
+
+  displayMovies();
+  clearForm();
+}
+
+// display movies
+function displayMovies(){
+  const movieList = document.getElementById("movieList");
+  movieList.innerHTML = "";
+
+  // loop through movies array and display each movie
+  getMovies().forEach(m => {
+    movieList.innerHTML += `
+      <div class="movie">
+        <strong>${m.title}</strong> (${m.year})<br>
+        Genre: ${m.genre}<br>
+        Rating: <span>${"★".repeat(m.rating)}</span>
+      </div>
+    `;
+  });
+}
+
+// clear form
+function clearForm(){
+  document.getElementById("title").value = "";
+  document.getElementById("year").value = "";
+  rating = 0;
+  updateStars();
+}
+</script>
+
+</body>
+</html>
