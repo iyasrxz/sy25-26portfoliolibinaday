@@ -23,7 +23,7 @@ body{
 .container{
   width:420px;
   margin:40px auto;
-  background:linear-gradient(#f9bdc1,#f1c9cc);
+  background:linear-gradient(#f9bdc1,#f1c9cc,#ffffff);
   padding:25px;
   border-radius:18px;
 }
@@ -129,7 +129,7 @@ button{
 <script>
 let rating = 0;
 
-// star rating system!!
+// star rating system
 // when a star is clicked, save its value and update the star display
 document.querySelectorAll("#stars span").forEach(star=>{
   star.addEventListener("click", function(){
@@ -201,8 +201,8 @@ function displayMovies(){
   const movieList = document.getElementById("movieList");
   movieList.innerHTML = "";
 
-  // loop through movies array and display each movie
-  getMovies().forEach(m => {
+  getMovies().forEach((m,index) => {
+
     movieList.innerHTML += `
       <div class="movie">
         <strong>${m.title}</strong> (${m.year})<br>
