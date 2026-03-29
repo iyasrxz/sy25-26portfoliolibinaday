@@ -61,7 +61,7 @@
 
 
 - Guided Question: What changed compared to the default static positioning? Try to give different values to top and left or you can change it to bottom, right.
-- Relative positioning moves the .sidebar opposite to the direction being specified. For example, when the direction that's specified is top and left, the sidebar moves down and towards the right.
+  - Relative positioning moves the .sidebar opposite to the direction being specified. For example, when the direction that's specified is top and left, the sidebar moves down and towards the right.
 
 
 ### Step 2 (Fixed):
@@ -70,7 +70,7 @@
 - Add in css ```position: fixed; bottom: 0; width: 100%;``` to .footer.
 
 - Guided Question: What happens when you scroll the page? Why does the footer behave differently from position relative?
-- When you scroll on the page, the footer's position will be fixed in the bottom. Unlike position fixed, position relative moves with the page as you scroll.
+  - When you scroll on the page, the footer's position will be fixed in the bottom. Unlike position fixed, position relative moves with the page as you scroll.
 
 
 ### Step 3 (Absolute):
@@ -79,7 +79,7 @@
 - Add in css ```position: absolute; top: 66px; left: 200px;``` to .content.
 
 - Guided Question: What is the effect of position: absolute on an element? How is it different from fixed?
-- The "position: absolute" places or positions the element based on the specified measurements. The difference from "position: fixed" can be seen when you scroll the page. When absolute is used, the content is being showed slowly however with fixed, the content is "stuck" or fixed to the view of the screen.
+  - The "position: absolute" places or positions the element based on the specified measurements. The difference from "position: fixed" can be seen when you scroll the page. When absolute is used, the content is being showed slowly however with fixed, the content is "stuck" or fixed to the view of the screen.
 
 
 ### Step 4 : (Absolute)
@@ -104,16 +104,16 @@
 
 
 - Guided Question: Why does the notice appear on top of the content? What happens if you swap the z‑index values?
-- When the z-index values are swapped, the content gets placed in front of the notice box. This is because z-index is an ordinal command wherein if the z-index value is greater for one element, then that element will be placed on top of the other.
+  - When the z-index values are swapped, the content gets placed in front of the notice box. This is because z-index is an ordinal command wherein if the z-index value is greater for one element, then that element will be placed on top of the other.
 
 
 - Challenge:
     * What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? Please write the code on paper as well (both html and css on the part of .notice and .content).
-    - .notice becomes positioned relative to .content, so it appears in the top-right corner of the content box.
+      - .notice becomes positioned relative to .content, so it appears in the top-right corner of the content box.
     * Try to change the position of .content to relative then to fixed. What do you observed each time?
-    - fixed makes the element stay in the same place in the viewport, while relative keeps it in the normal page flow.
+      - fixed makes the element stay in the same place in the viewport, while relative keeps it in the normal page flow.
     * What do you observe on about the effect of z-index on .notice and .content boxes?
-    - The .notice box appears above the .content box because it has a higher z-index.
+      - The .notice box appears above the .content box because it has a higher z-index.
 
 
 3. Please answer the following reflection questions (15 minutes)
