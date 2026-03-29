@@ -77,10 +77,9 @@
 
 
 - Add in css ```position: absolute; top: 66px; left: 200px;``` to .content.
-- The "position: absolute" places or positions the element based on the specified measurements. The difference from "position: fixed" can be seen when you scroll the page. When absolute is used, the content is being showed slowly however with fixed, the content is "stuck" or fixed to the view of the screen.
-
 
 - Guided Question: What is the effect of position: absolute on an element? How is it different from fixed?
+- The "position: absolute" places or positions the element based on the specified measurements. The difference from "position: fixed" can be seen when you scroll the page. When absolute is used, the content is being showed slowly however with fixed, the content is "stuck" or fixed to the view of the screen.
 
 
 ### Step 4 : (Absolute)
@@ -110,11 +109,11 @@
 
 - Challenge:
     * What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? Please write the code on paper as well (both html and css on the part of .notice and .content).
-    -
+    - .notice becomes positioned relative to .content, so it appears in the top-right corner of the content box.
     * Try to change the position of .content to relative then to fixed. What do you observed each time?
-    -
+    - fixed makes the element stay in the same place in the viewport, while relative keeps it in the normal page flow.
     * What do you observe on about the effect of z-index on .notice and .content boxes?
-    -
+    - The .notice box appears above the .content box because it has a higher z-index.
 
 
 3. Please answer the following reflection questions (15 minutes)
@@ -127,7 +126,7 @@
     - Fixed: It stays with the screen view; Fixed and moves along with the view
 
     b. How does absolute positioning depend on its parent element?
-
+    - Absolute positioning places an element relative to its nearest parent that has a position set (like relative or absolute). If none of its parents have a position set, the element is positioned relative to the whole page.
 
     c. How do you differentiate sticky from fixed (you can research on sticky)?
     - Sticky allows the user to achieve both relative and fixed in one element. It will allow you to scroll like relative until a certain threshold is achieved as afterwards it will stay as fixed.
